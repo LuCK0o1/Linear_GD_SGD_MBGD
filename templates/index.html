@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <tital>Spending Predictor</tital>
+    <style>
+        form{
+          align:"center";
+          box-sizing: border-box;
+          border : "black";
+        }
+        h1{
+          margin-top : 3%;
+        }
+        h3{
+          margin-top:5%;
+        }
+        label{
+          margin-left:41.5%;
+          display: block;
+          width: 260px;
+          height: 10px;
+
+          font-size: 17px;
+        }
+        input{
+          margin-left:41.5%;
+          display: block;
+          width: 260px;
+          height: 30px;
+          padding-left: 10px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          margin-top: 7px;
+          font-size: 17px;
+          border-radius: 20px;
+          background: rgba(0,0,0,0.05);
+          border: none;
+          transition: background 0.5s;
+          &:focus{
+            outline-width: 0;
+            background: rgba(31,134,252, 0.15);
+            transition: background 0.5s;
+          }
+        }
+
+
+    </style>
+</head>
+<body background=#99dfeb>
+    <h1 align="center">Spending Amount Predictor</h1><br>
+    <form align = "center" method="post" action="/predict">
+        <label>Avg. Session Length</label><br>
+        <input type = "number" name = "Avg. Session Length" ><br><br>
+
+        <label>Time on App</label><br>
+        <input type = "number" name = "Time on App"><br><br>
+
+        <label>Length of Membership</label><br>
+        <input type = "number" name = "Length of Membership"><br><br>
+        <div>
+            <input type = "submit" name = "predict_linear" value="Linear Regression">
+            <input type = "submit" name = "predict_stochastic" value="Stochastic GD">
+        </div>
+
+        {% if result %}
+            <h3>Prediction with {{result[1]}}</h3>
+            <h1>{{result[0][0]}}</h1>
+        {% endif %}
+    </form>
+</body>
+</html>
